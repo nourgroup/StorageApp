@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class ItemNumberAdapter(
     private val context: Context,
-    private val dataset: List<BookNumber>
+    private var dataset: List<BookNumber>
 ) : RecyclerView.Adapter<ItemNumberAdapter.ItemViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -48,4 +48,8 @@ class ItemNumberAdapter(
      * Return the size of your dataset (invoked by the layout manager)
      */
     override fun getItemCount() = dataset.size
+
+    fun submit(localDataset : List<BookNumber>){
+        dataset = localDataset
+    }
 }

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding?.root)
-
+        val adapter = ItemNumberAdapter(this, listOfflineMode)
         _binding?.save?.setOnClickListener {
             val name = _binding?.etName?.text.toString()
             val telephone = _binding?.etTelephone?.text.toString()
@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
                 saveData()
-                loadData()
+                adapter.submit(listOfflineMode)
                 _binding?.rvList?.adapter?.notifyDataSetChanged()
             }
         }
-        _binding?.rvList?.adapter = ItemNumberAdapter(this, listOfflineMode)
+        _binding?.rvList?.adapter = adapter
         _binding?.rvList?.setHasFixedSize(true)
 
     }
